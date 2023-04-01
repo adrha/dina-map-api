@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  db:
+    image: mariadb:10.7
+    container_name: openpartplat-api-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rOotPw#23
+      MYSQL_DATABASE: openpartplat
+      MYSQL_USER: openpartplat
+      MYSQL_PASSWORD: openpartplatPW
+    ports:
+      - 5503:3306
+    volumes:
+      - openpartplat-dbdata:/var/lib/mysql
+    command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci', '--explicit_defaults_for_timestamp', '--transaction-isolation=READ-COMMITTED']
+
+volumes:
+  openpartplat-dbdata:
+    name: openpartplat-api-db
